@@ -1,7 +1,12 @@
-import { Inter } from "next/font/google";
+import { Alegreya_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const alegreya = Alegreya_Sans({
+  subsets: ["latin"],
+  weight: ['100', '300', '400', '500', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap'
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`bg-tk-cream ${alegreya.className}`}>{children}</body>
     </html>
   );
 }

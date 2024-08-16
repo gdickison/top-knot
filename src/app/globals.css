@@ -2,32 +2,153 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  font-family: "Alegreya Sans", sans-serif;
+  font-size:   19px;
+  /* line-height: 1.5em; */
+  margin: 6rem;
 }
 
-@media (prefers-color-scheme: dark) {
+/* For browsers that support clamp  */
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+		--fs-xs: clamp(0.64rem, 0.02vi + 0.64rem, 0.67rem);
+		--fs-sm: clamp(0.8rem, 0.07vi + 0.78rem, 0.89rem);
+		--fs-base: clamp(1rem, 0.15vi + 0.97rem, 1.19rem);
+		--fs-md: clamp(1.25rem, 0.26vi + 1.19rem, 1.58rem);
+		--fs-lg: clamp(1.56rem, 0.43vi + 1.47rem, 2.11rem);
+		--fs-xl: clamp(1.95rem, 0.67vi + 1.81rem, 2.81rem);
+		--fs-2xl: clamp(2.44rem, 1.02vi + 2.22rem, 3.75rem);
+		--fs-3xl: clamp(3.05rem, 1.52vi + 2.72rem, 5rem);
+  }
+}
+/* For browsers that don't support clamp */
+@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+  :root {
+		--fs-xs: 0.64rem;
+		--fs-sm: 0.8rem;
+		--fs-base: 1rem;
+		--fs-md: 1.25rem;
+		--fs-lg: 1.56rem;
+		--fs-xl: 1.95rem;
+		--fs-2xl: 2.44rem;
+		--fs-3xl: 3.05rem;
+  }
+  @media screen and (min-width: 2400px) {
+    :root {
+			--fs-xs: 0.67rem;
+			--fs-sm: 0.89rem;
+			--fs-base: 1.19rem;
+			--fs-md: 1.58rem;
+			--fs-lg: 2.11rem;
+			--fs-xl: 2.81rem;
+			--fs-2xl: 3.75rem;
+			--fs-3xl: 5rem;
+    }
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+h1, .h1 {
+  font-size: var(--fs-3xl);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+h2, .h2 {
+  font-size: var(--fs-2xl, 33px);
+}
+
+h3, .h3 {
+  font-size: var(--fs-xl, 28px);
+}
+
+h4, .h4 {
+  font-size: var(--fs-lg, 24px);
+}
+
+h5, .h5 {
+  font-size: var(--fs-md, 21px);
+}
+
+p, .p {
+  font-size: var(--fs-base, 16px);
+}
+
+.md {
+  font-size: var(--fs-md);
+}
+
+.sm {
+  font-size: var(--fs-sm);
+}
+
+.xs {
+  font-size: var(--fs-xs);
+}
+a {
+  color: var(--hyperlink-color);
+}
+
+.color-scheme-dark {
+  --hyperlink-color: var(--royal-blue-950);
+  color:             var(--royal-blue-950);
+}
+
+.color-scheme-light {
+  --hyperlink-color: var(--royal-blue-50);
+  color:             var(--royal-blue-50);
+}
+
+.container {
+  width:         1570px;
+  margin-left:   auto;
+  margin-right:  auto;
+  padding-left:  25px;
+  padding-right: 25px;
+}
+
+@media (min-width: 1200px) and (max-width: 1599.98px) {
+  .container {
+    width: 1170px;
+  }
+  body {
+    margin: 6rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .container {
+    width: 962px;
+  }
+  body {
+    margin: 4rem;
+  }
+}
+
+/* TP - Tablet (portrait) & Tall mobile (landscape) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+    width: 100%;
+  }
+  body {
+    margin: 2rem;
+  }
+}
+
+/* ML - Mobile (landscape) & Small tablet */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .container {
+    width: 100%;
+  }
+  body {
+    margin: 1rem;
+  }
+}
+
+/* MP - Mobile (portrait) */
+@media (max-width: 575.98px) {
+  .container {
+    width: 100%;
+  }
+  body {
+    margin: 1rem;
   }
 }
