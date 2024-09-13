@@ -20,7 +20,7 @@ export default function NewAppointment() {
         disableYearPicker={true}
         numberOfMonths={3}
         highlightToday={false}
-        inputClass="w-[750px] px-2 rounded-md"
+        inputclassName="w-[750px] px-2 rounded-md"
         minDate={"04/01/2024"}
         maxDate={"06/30/2024"}
         rangeHover={true}

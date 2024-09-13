@@ -1,3 +1,4 @@
+import CustomerIntakeForm from "@/components/CustomerIntakeForm"
 import Link from "next/link"
 
 const pages = [
@@ -24,11 +25,12 @@ export default function Home() {
     <>
       {pages && pages.map(page => {
         return (
-          <div key={page.name}>
+          <div key={page.name} className="max-w-[96rem] mx-auto">
             <Link href={page.href}>{page.name}</Link>
           </div>
         )
       })}
+      <CustomerIntakeForm/>
     </>
   )
 }
