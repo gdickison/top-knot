@@ -30,21 +30,7 @@ export default function CustomerIntakeForm () {
   const GoogleApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
   const { register, control, handleSubmit, reset, formState: { isDirty } } = useForm({
-    defaultValues: {
-      first_name: '',
-      last_name: '',
-      email: '',
-      // physical_address_1: '',
-      // physical_address_2: '',
-      // city: '',
-      // state: '',
-      // zip: '',
-      phone: '',
-      unavailable_dates: '',
-      number_of_alpacas: '',
-      number_of_llamas: '',
-      number_of_sheep: ''
-    }
+    defaultValues: {}
   });
 
   useEffect(() => {
@@ -154,7 +140,7 @@ export default function CustomerIntakeForm () {
               <div className="pb-12">
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
-                  <h3 className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900 mt-4">Ranch Information</h3>
+                  <h3 className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900 mt-4">Appointment Request</h3>
                   <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
                     First name
                     <input
@@ -177,77 +163,7 @@ export default function CustomerIntakeForm () {
                     />
                   </label>
 
-                  <label className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900">
-                    Physical Address
-                    <input
-                      ref={inputRef}
-                      type="text"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
-                      placeholder="What you enter in to Google Maps to find your ranch"
-                    />
-                  </label>
-                  {addressDetails && (
-                    <div className="bg-gray-100 p-4 rounded sm:col-span-6">
-                      <h2 className="text-xl font-semibold mb-2">Address Details:</h2>
-                      <p><strong>Full Address:</strong> {addressDetails.fullAddress}</p>
-                      <p><strong>Street:</strong> {addressDetails.street}</p>
-                      <p><strong>City:</strong> {addressDetails.city}</p>
-                      <p><strong>State:</strong> {addressDetails.state}</p>
-                      <p><strong>Country:</strong> {addressDetails.country}</p>
-                      <p><strong>Postal Code:</strong> {addressDetails.postalCode}</p>
-                      <p><strong>Latitude:</strong> {addressDetails.latitude}</p>
-                      <p><strong>Longitude:</strong> {addressDetails.longitude}</p>
-                    </div>
-                  )}
-
-                  {/* <label className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900">
-                    Physical Address Line 1
-                    <input
-                      {...register("physical_address_1", { required: true })}
-                      type="text"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
-                      placeholder="123 Main St"
-                    />
-                  </label>
-
-                  <label className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900">
-                    Physical Address Line 2
-                    <input
-                      {...register("physical_address_2")}
-                      type="text"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
-                      placeholder="Apt 4B"
-                    />
-                  </label>
-
                   <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
-                    City
-                    <input
-                      {...register("city", { required: true })}
-                      type="text"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
-                    />
-                  </label>
-
-                  <label className="block sm:col-span-2 text-medium font-medium leading-6 text-gray-900">
-                    State/Province
-                    <input
-                      {...register("state", { required: true })}
-                      type="text"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
-                    />
-                  </label>
-
-                  <label className="block sm:col-span-1 text-medium font-medium leading-6 text-gray-900">
-                    Zip/Postal Code
-                    <input
-                      {...register("zip", { required: true })}
-                      type="text"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
-                    />
-                  </label> */}
-
-                  <label className="block sm:col-span-2 text-medium font-medium leading-6 text-gray-900">
                     Email address
                     <input
                       {...register("email", {
@@ -259,7 +175,7 @@ export default function CustomerIntakeForm () {
                     />
                   </label>
 
-                  <label className="block sm:col-span-2 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
                     Phone Number
                     <Controller
                       name="phone"
@@ -288,16 +204,47 @@ export default function CustomerIntakeForm () {
                       )}
                     />
                   </label>
-
-                  <label className="block sm:col-span-2 text-medium font-medium leading-6 text-gray-900">
-                    Unavailable Dates
+                  <label className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900">
+                    Physical Address
                     <input
-                      {...register("unavailable_dates")}
+                      ref={inputRef}
                       type="text"
                       className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
-                      placeholder=""
+                      placeholder="What you enter in to Google Maps to find your ranch"
                     />
                   </label>
+                  {addressDetails && (
+                    <div className="bg-gray-100 p-4 rounded sm:col-span-6">
+                      <h2 className="text-xl font-semibold mb-2">Address Details:</h2>
+                      <p><strong>Full Address:</strong> {addressDetails.fullAddress}</p>
+                      <p><strong>Street:</strong> {addressDetails.street}</p>
+                      <p><strong>City:</strong> {addressDetails.city}</p>
+                      <p><strong>State:</strong> {addressDetails.state}</p>
+                      <p><strong>Country:</strong> {addressDetails.country}</p>
+                      <p><strong>Postal Code:</strong> {addressDetails.postalCode}</p>
+                      <p><strong>Latitude:</strong> {addressDetails.latitude}</p>
+                      <p><strong>Longitude:</strong> {addressDetails.longitude}</p>
+                    </div>
+                  )}
+
+                  <div className="sm:col-span-6 space-y-4">
+                    <label className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900">
+                      <p className="font-semibold">Unavailable Dates</p>
+                      {addressDetails &&
+                        <div className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900 my-2">
+                          <p>Last year we were at your farm on June 25th.</p>
+                          <p>This year we will likely be at your farm between June 20th and August 10th.</p>
+                          <p>Are there any days between June 20th and August 10th when you will absulutely not be available?</p>
+                        </div>
+                      }
+                      <input
+                        {...register("unavailable_dates")}
+                        type="text"
+                        className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
+                        placeholder=""
+                      />
+                    </label>
+                  </div>
 
                   <label className="block sm:col-span-2 text-medium font-medium leading-6 text-gray-900">
                     Number of Alpacas
