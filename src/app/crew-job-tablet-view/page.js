@@ -3,7 +3,7 @@
 import { useState } from "react"
 
 export default function JobDashboard () {
-  const [address, setAddress] = useState('1136 East E Street, Moscow, ID 83843')
+  const [address, setAddress] = useState('5120 Robinson Park Rd, Moscow, ID 83843')
   function handleAddressChange (e) {
     e.preventDefault()
     setAddress(e.target.value)
