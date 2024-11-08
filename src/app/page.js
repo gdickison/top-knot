@@ -17,6 +17,10 @@ const pages = [
   {
     name: 'Job Dashboard',
     href: '/job-dashboard'
+  },
+  {
+    name: 'Crew Tablet View',
+    href: '/crew-tablet-view'
   }
 ]
 
