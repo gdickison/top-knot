@@ -11,7 +11,6 @@ export default function JobDashboard () {
   }
 
   const GoogleApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
-  
 
   return (
     <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg space-y-6">
@@ -42,75 +41,28 @@ export default function JobDashboard () {
           <p className="text-gray-600 text-2xl">Llamas: 6</p>
         </div>
       </div>
-      
+
       <div className="mb-6">
         <p className="block text-gray-600 text-2xl">Customer Notes</p>
         <p className="w-full border border-gray-300 p-2 rounded" rows="5">Grandchildren will be visiting this summer, so likely there will be children ages 8-14 who want to watch. Per the county road department, there may be construction on the main road. Check ahead about delays or going on Jones Road instead of Smith Road.</p>
       </div>
       
-      {/* <div className="my-4">
-        <span className="font-bold text-gray-600">(or, if scheduled)</span>
+      <div className="mb-4 flex gap-4 items-center">
+        <label className="font-bold text-gray-600 text-2xl">Job Completed</label>
+        <input type="checkbox" className="h-6 w-6" />
       </div>
-      
-      <div className="grid grid-cols-5 gap-4 mb-6">
+
+      <div className="grid grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="block text-gray-600">Date</label>
-          <input type="date" value="2025-06-19" className="w-full border border-gray-300 p-2 rounded"/>
+          <label className="block text-gray-600">Start Time</label>
+          <input type="datetime-local" value="12" className="w-full border border-gray-300 p-2 rounded"/>
         </div>
         <div>
-          <label className="block text-gray-600">Crew</label>
-          <input type="number" value="1" className="w-full border border-gray-300 p-2 rounded"/>
-        </div>
-        <div>
-          <label className="block text-gray-600">Time</label>
-          <input type="time" value="09:00" className="w-full border border-gray-300 p-2 rounded"/>
-        </div>
-        <div>
-          <label className="block text-gray-600">Alpacas</label>
-          <input type="number" value="12" className="w-full border border-gray-300 p-2 rounded"/>
-        </div>
-        <div>
-          <label className="block text-gray-600">Llamas</label>
-          <input type="number" value="6" className="w-full border border-gray-300 p-2 rounded"/>
-        </div>
-      </div> */}
-      
-      {/* <div className="mb-6">
-        <label className="block text-gray-600 text-2xl">Crew Notes</label>
-        <textarea className="w-full border border-gray-300 p-2 rounded" rows="5">Customer had three extra animals purchased since they made the appointment, so bill was adjusted accordingly.</textarea>
-      </div> */}
-      
-      <div className="mb-4">
-        <span className="font-bold text-gray-600">Job Completed</span>
-      </div>
-      
-      <div className="grid grid-cols-6 gap-4 mb-6">
-        <div>
-          <label className="block text-gray-600">Date</label>
-          <input type="date" value="2025-06-19" className="w-full border border-gray-300 p-2 rounded"/>
-        </div>
-        {/* <div>
-          <label className="block text-gray-600">Crew</label>
-          <input type="number" value="1" className="w-full border border-gray-300 p-2 rounded"/>
-        </div>
-        <div>
-          <label className="block text-gray-600">(other info?)</label>
-          <input type="text" className="w-full border border-gray-300 p-2 rounded"/>
-        </div> */}
-        <div>
-          <label className="block text-gray-600">Alpacas</label>
-          <input type="number" value="12" className="w-full border border-gray-300 p-2 rounded"/>
-        </div>
-        <div>
-          <label className="block text-gray-600">Llamas</label>
-          <input type="number" value="8" className="w-full border border-gray-300 p-2 rounded"/>
-        </div>
-        <div>
-          <label className="block text-gray-600">Total Time</label>
-          <input type="text" value="5:20" className="w-full border border-gray-300 p-2 rounded"/>
+          <label className="block text-gray-600">End Time</label>
+          <input type="datetime-local" value="8" className="w-full border border-gray-300 p-2 rounded"/>
         </div>
       </div>
-      
+
       <div className="mb-6">
       <label className="block text-gray-600 text-2xl">Job Notes</label>
         <textarea className="w-full border border-gray-300 p-2 rounded" rows="5">Started late due to road construction delay - no alternative route. Since the job started late John wanted to feed us lunch. He also acquired two additional llamas that we were not told about ahead of time.</textarea>
