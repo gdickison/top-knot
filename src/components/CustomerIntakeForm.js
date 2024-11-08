@@ -246,7 +246,7 @@ export default function CustomerIntakeForm () {
                     </label>
                   </div>
 
-                  <label className="block sm:col-span-2 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
                     Number of Alpacas
                     <input
                       {...register("number_of_alpacas")}
@@ -255,7 +255,7 @@ export default function CustomerIntakeForm () {
                       placeholder="0"
                     />
                   </label>
-                  <label className="block sm:col-span-2 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
                     Number of Llamas
                     <input
                       {...register("number_of_llamas")}
@@ -264,16 +264,13 @@ export default function CustomerIntakeForm () {
                       placeholder="0"
                     />
                   </label>
-                  <label className="block sm:col-span-2 text-medium font-medium leading-6 text-gray-900">
-                    Number of Sheep
-                    <input
-                      {...register("number_of_sheep")}
-                      type="number"
+                  <label className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900">
+                    Notes
+                    <textarea
                       className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
-                      placeholder="0"
+                      placeholder="What do you want us to know about your animals?"
                     />
                   </label>
-
                 </div>
               </div>
             </div>
