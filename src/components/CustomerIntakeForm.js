@@ -113,7 +113,7 @@ export default function CustomerIntakeForm () {
   };
 
   const submitProfile = async (data) => {
-
+    console.log('data', data)
     data.map_address = addressDetails
 
     console.log('data', data)
@@ -160,6 +160,8 @@ export default function CustomerIntakeForm () {
     setValue('unavailable_dates', selectedDates.join('; '));
   }, [selectedDates, setValue]);
 
+  const inputClassName = "mt-2 block w-full rounded-md border-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100";
+
   return (
     <div className="max-w-[96rem] divide-y divide-gray-900/10 mx-auto rounded-3xl md:rounded-t-none my-2 md:my-0 z-10 relative px-6 pb-6 min-h-screen">
       {/* Top full width section */}
@@ -176,41 +178,41 @@ export default function CustomerIntakeForm () {
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
                   <h3 className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900 mt-4">Appointment Request</h3>
-                  <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-3 text-2xl font-medium leading-6 text-gray-900">
                     First name
                     <input
                       {...register("first_name", {
                         required: true
                       })}
                       type="text"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
+                      className={inputClassName}
                     />
                   </label>
 
-                  <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-3 text-2xl font-medium leading-6 text-gray-900">
                     Last name
                     <input
                       {...register("last_name", {
                         required: true
                       })}
                       type="text"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
+                      className={inputClassName}
                     />
                   </label>
 
-                  <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-3 text-2xl font-medium leading-6 text-gray-900">
                     Email address
                     <input
                       {...register("email", {
                         required: true
                       })}
                       type="email"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
+                      className={inputClassName}
                       placeholder="email@example.com"
                     />
                   </label>
 
-                  <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-3 text-2xl font-medium leading-6 text-gray-900">
                     Phone Number
                     <Controller
                       name="phone"
@@ -221,9 +223,7 @@ export default function CustomerIntakeForm () {
                           <input
                             type="tel"
                             id="phone"
-                            className={`mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100 ${
-                              error ? 'border-red-500' : ''
-                            }`}
+                            className={`${inputClassName} ${error ? 'border-red-500' : ''}`}
                             placeholder="(123) 456-7890"
                             value={value}
                             onChange={(e) => {
@@ -239,18 +239,26 @@ export default function CustomerIntakeForm () {
                       )}
                     />
                   </label>
-                  <label className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-6 text-2xl font-medium leading-6 text-gray-900">
+                    Name of Ranch (optional)
+                    <input
+                      {...register("ranch_name")}
+                      type="text"
+                      className={inputClassName}
+                    />
+                  </label>
+                  <label className="block sm:col-span-6 text-2xl font-medium leading-6 text-gray-900">
                     Physical Address
                     <input
                       ref={inputRef}
                       type="text"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
+                      className={inputClassName}
                       placeholder="What you enter in to Google Maps to find your ranch"
                     />
                   </label>
                   {addressDetails && (
                     <div className="bg-gray-100 p-4 rounded sm:col-span-6">
-                      <h2 className="text-xl font-semibold mb-2">Address Details:</h2>
+                      <h2 className="text-2xl font-semibold mb-2">Address Details:</h2>
                       <p><strong>Full Address:</strong> {addressDetails.fullAddress}</p>
                       <p><strong>Street:</strong> {addressDetails.street}</p>
                       <p><strong>City:</strong> {addressDetails.city}</p>
@@ -263,8 +271,8 @@ export default function CustomerIntakeForm () {
                   )}
 
                   <div className="sm:col-span-6 space-y-4">
-                    <label className="block text-medium font-medium leading-6 text-gray-900">
-                      <p className="font-semibold">Unavailable Dates</p>
+                    <label className="block text-2xl font-medium leading-6 text-gray-900">
+                      <p className="font-semibold text-2xl">Unavailable Dates</p>
                       {addressDetails && (
                         <div className="my-2">
                           <p>Last year we were at your farm on June 25th.</p>
@@ -274,7 +282,7 @@ export default function CustomerIntakeForm () {
                       )}
 
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                        {[3, 4, 5].map((monthIndex) => (
+                        {[3, 4, 5, 6, 7, 8].map((monthIndex) => (
                           <div key={monthIndex} className="border rounded-lg p-4">
                             <h4 className="text-center font-semibold mb-2">
                               {format(new Date(2025, monthIndex), 'MMMM yyyy')}
@@ -329,28 +337,28 @@ export default function CustomerIntakeForm () {
                     </label>
                   </div>
 
-                  <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-3 text-2xl font-medium leading-6 text-gray-900">
                     Number of Alpacas
                     <input
                       {...register("number_of_alpacas")}
                       type="number"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
+                      className={inputClassName}
                       placeholder="0"
                     />
                   </label>
-                  <label className="block sm:col-span-3 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-3 text-2xl font-medium leading-6 text-gray-900">
                     Number of Llamas
                     <input
                       {...register("number_of_llamas")}
                       type="number"
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
+                      className={inputClassName}
                       placeholder="0"
                     />
                   </label>
-                  <label className="block sm:col-span-6 text-medium font-medium leading-6 text-gray-900">
+                  <label className="block sm:col-span-6 text-2xl font-medium leading-6 text-gray-900">
                     Notes
                     <textarea
-                      className="mt-2 block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#4e02e4] sm:text-medium sm:leading-6 bg-gray-100"
+                      className={inputClassName}
                       placeholder="What do you want us to know about your animals?"
                     />
                   </label>
