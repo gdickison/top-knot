@@ -128,26 +128,27 @@ export default function CustomerIntakeForm () {
   };
 
   const generateMonth = (monthIndex) => {
-    const baseDate = new Date(2025, monthIndex, 1); // monthIndex: 3=April, 4=May, 5=June
+    // Force timezone to UTC to avoid any local timezone shifts
+    const baseDate = new Date(Date.UTC(2025, monthIndex, 1));
     const daysInMonth = getDaysInMonth(baseDate);
     const monthStart = startOfMonth(baseDate);
-    const startDay = monthStart.getDay(); // 0-6, representing Sunday-Saturday
+    const startDay = monthStart.getDay();
 
     const days = [];
-    // Add empty cells for days before the 1st
     for (let i = 0; i < startDay; i++) {
       days.push(null);
     }
-    // Add all days of the month
     for (let i = 1; i <= daysInMonth; i++) {
-      days.push(new Date(2025, monthIndex, i));
+      days.push(new Date(Date.UTC(2025, monthIndex, i)));
     }
     return days;
   };
 
   const toggleDate = (date) => {
     if (!date) return;
-    const dateStr = format(date, 'yyyy-MM-dd');
+    // Create date in UTC
+    const utcDate = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+    const dateStr = format(utcDate, 'yyyy-MM-dd');
     setSelectedDates(prev => {
       if (prev.includes(dateStr)) {
         return prev.filter(d => d !== dateStr);
@@ -313,7 +314,7 @@ export default function CustomerIntakeForm () {
                         ))}
                       </div>
 
-                      {selectedDates.length > 0 && (
+                      {/* {selectedDates.length > 0 && (
                         <div className="mt-4 p-4 bg-gray-50 rounded-lg">
                           <p className="font-medium">Selected Dates:</p>
                           <div className="flex flex-wrap gap-2 mt-2">
@@ -328,7 +329,7 @@ export default function CustomerIntakeForm () {
                             ))}
                           </div>
                         </div>
-                      )}
+                      )} */}
 
                       <input
                         type="hidden"
